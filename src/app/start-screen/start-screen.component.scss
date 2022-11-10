@@ -16,15 +16,15 @@
     position: absolute;
     color: white;
     top: 30vh;
-    font-size: 30px;
+    font-size: 50px;
 }
 
 .start-label{
     background-color: rgba(0,0,0,0.5);
+    font: 400 29px/57px Roboto, "Helvetica Neue", sans-serif!important;
     position: absolute;
     color: white;
     top: 48vh;
-    font-size: 60px;
     width: 230px;
     display: flex;
     justify-content: center;
@@ -33,5 +33,6 @@
 
     &:hover{
         opacity: 0.5;
+        font: 400 49px/57px Roboto, "Helvetica Neue", sans-serif!important;
     }
 }
