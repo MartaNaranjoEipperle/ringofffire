@@ -1,27 +1,24 @@
 .player {
-    overflow: hidden;
     display: flex;
     align-items: center;
+    flex-direction: column-reverse;
     background-color: rgb(28, 32, 30, 0.8);
-    width: 300px;
-    border-top-left-radius: 100px;
+    width: 90px;
+    border-bottom-right-radius: 100px;
     border-bottom-left-radius: 100px;
+    margin-right: 5px;
 
     span{
-        font-size: 24px;
-        margin-left: 16px;
+        font-size: 16px;
         color: white;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
+        margin-top: 15px;
     }
 
     img {
-        margin-left: 16px;
         margin-top: 5px;
         margin-bottom: 5px;
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         object-fit: cover;
         border-radius: 100%;
     }
@@ -30,3 +27,4 @@
 .player-active{
     background-color: rgb(105, 39, 52);
 }
+

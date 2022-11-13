@@ -2,13 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 
 @Component({
-  selector: 'app-player',
-  templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss']
+  selector: 'app-player-mobile',
+  templateUrl: './player-mobile.component.html',
+  styleUrls: ['./player-mobile.component.scss']
 })
-export class PlayerComponent implements OnInit {
-  @Input() name: string="";
+export class PlayerMobileComponent implements OnInit {
   @Input() image: string="";
+  @Input() name: string="";
   @Input() playerActive: boolean = false;
   playersImg: string[] = [];
   game!: Game;
@@ -26,7 +26,6 @@ export class PlayerComponent implements OnInit {
     this.playerImg = this.playersImg.pop()!;
   }
 
-      
 }
 
 function shuffle(array: string[]) {

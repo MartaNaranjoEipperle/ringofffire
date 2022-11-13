@@ -1,30 +1,39 @@
-<app-player *ngFor="let player of game.players; let i= index;" [ngStyle]="{'top.px': 90 + (i * 115)}" 
-[playerActive]="i == game.currentPlayer"
-[name]="player" class="player-position"></app-player>
+<app-player (click)="editPlayer(i)" *ngFor="let player of game.players; let i= index;"
+  [ngStyle]="{'top.px': 20 + (i * 80)}" [playerActive]="i == game.currentPlayer" [image]="game.player_images[i]"
+  [name]="player" class="player-position hide-mobile"></app-player>
 
-<div class="field">
+<div class="scroll-container hide-desktop">
+  <app-player-mobile *ngFor="let player of game.players; let i= index;" [playerActive]="i == game.currentPlayer"
+    [image]="game.player_images[i]" [name]="player" (click)="editPlayer(i)"></app-player-mobile>
+</div>
 
+<div *ngIf="gameOver" class="field" >
+  <img class="gameOver" src="/assets/img/gameOver.jpg">
+  <div class="gameOverText"> 
+GAME <br>OVER
+  </div> 
+</div>
 
+<div *ngIf="!gameOver" class="field">
+    <div class="card-stack">
+      <!-- Card stack-->
+      <img [ngStyle]="{'right.px': i *5}" *ngFor="let c of [1,2,3,4]; let i= index;"
+        src="/assets/img/playing_cards-master/card_cover.png">
+      <img (click)="takeCard()" class="top-card" style="right: 25px;"
+        src="/assets/img/playing_cards-master/card_cover.png">
 
-<div class="card-stack">
-    <!-- Card stack-->
-    <img [ngStyle]="{'right.px': i *5}" *ngFor="let c of [1,2,3,4]; let i= index;" 
-    src="/assets/img/playing_cards-master/card_cover.png">
-    <img (click)="takeCard()" class="top-card" style="right: 25px;" 
-    src="/assets/img/playing_cards-master/card_cover.png">
-    
       <!-- Card for played-->
-    <img *ngFor="let card of game.playedCards" class="played-card" 
-    src="/assets/img/playing_cards-master/{{ card }}.png">
+      <img *ngFor="let card of game.playedCards" class="played-card"
+        src="/assets/img/playing_cards-master/{{ card }}.png">
 
       <!-- Current card (animation)-->
-    <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;" 
-    src="/assets/img/playing_cards-master/{{ game.currentCard }}.png">
-</div>
-</div>
+      <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;"
+        src="/assets/img/playing_cards-master/{{ game.currentCard }}.png">
+    </div>
+  </div>
 
-<app-game-info [card]="game.currentCard" class="pin-bottom"></app-game-info>
+  <app-game-info [card]="game.currentCard" class="pin-bottom"></app-game-info>
 
-<button mat-fab color="primary" class="btn-add" (click)="openDialog()">
-  <mat-icon>add</mat-icon>
-</button>
+  <button mat-fab color="primary" class="btn-add" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
